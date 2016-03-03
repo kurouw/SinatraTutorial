@@ -32,8 +32,6 @@ get '/:name' do |n|
   erb :index
 end
 
-=end
-
 get '/' do
   @title = "main index"
   @content = "main content"
@@ -43,6 +41,33 @@ end
 get '/about' do
   @title = "about this page"
   @content = "this page is...."
+  @email = "kuro@gmail.com"
+  erb :about
+end
+
+=end
+
+before  do
+  @author = "kuro"
+end
+
+before '/admin/*' do
+  @msg = "admin area!"
+end
+
+after do
+  logger.info "page displayed successfully"
+end
+  
+get '/' do
+  @title = "main index"
+  @content = "main content by " + @author 
+  erb :index
+end
+
+get '/about' do
+  @title = "about this page"
+  @content = "this page is...." + @author
   @email = "kuro@gmail.com"
   erb :about
 end
