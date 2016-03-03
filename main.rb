@@ -18,9 +18,11 @@ get '/hello/:fname/:lname' do |f,l|
   "hello #{f} #{l}"
 end
 
-=end
-
 get %r{/users/([0-9]*)} do |i|
   "user id = #{i}"
 end
   
+=end
+get '/' do
+  erb :index
+end
