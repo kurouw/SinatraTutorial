@@ -58,7 +58,15 @@ end
 after do
   logger.info "page displayed successfully"
 end
-  
+
+helpers do
+
+  def strong(s)
+    "<strong>#{s}</strong>"
+  end
+
+end
+
 get '/' do
   @title = "main index"
   @content = "main content by " + @author 
@@ -67,7 +75,7 @@ end
 
 get '/about' do
   @title = "about this page"
-  @content = "this page is...." + @author
+  @content = "this page is...." + strong(@author)
   @email = "kuro@gmail.com"
   erb :about
 end
