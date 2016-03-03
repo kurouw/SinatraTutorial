@@ -26,10 +26,23 @@ get '/' do
   erb :index
 end
 
-=end
-
 get '/:name' do |n|
   @name = n
   @title = "SinatraTutorial"
   erb :index
+end
+
+=end
+
+get '/' do
+  @title = "main index"
+  @content = "main content"
+  erb :index
+end
+
+get '/about' do
+  @title = "about this page"
+  @content = "this page is...."
+  @email = "kuro@gmail.com"
+  erb :about
 end
