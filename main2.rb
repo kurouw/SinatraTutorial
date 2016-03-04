@@ -10,6 +10,12 @@ ActiveRecord::Base.establish_connection(
 class Comment < ActiveRecord::Base
 end
 
+helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+end
+
+
 get '/' do
   @comments = Comment.order("id desc").all
   erb :index
