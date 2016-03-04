@@ -20,4 +20,6 @@ post'/new' do
   redirect '/'
 end
 
-
+post'/delete' do
+  Comment.find(params[:id]).destroy
+end

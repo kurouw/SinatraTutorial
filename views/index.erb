@@ -10,7 +10,7 @@
 	<% @comments.each do |comment| %>
 	<li data-id="<%= comment.id %>">
 		<%= comment.body %>
-		<span ckass="deleteCmd" style="cursor:pointer;color:blue">[x]</span>
+		<span class="deleteCmd" style="cursor:pointer;color:blue">[x]</span>
 	</li>
 	<% end %>
 	</ul>
@@ -18,19 +18,20 @@
 	<form method="post" action="/new">
 	      <input type="text" name="body"> <input type="submit" value="post!">
 	</form>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	
 	<script>
-		$('.deleteCmd').click(function(){
-			var el = $(this).partent();
-			if (confirm('are you sure to delete?')){
-		  	   $.post('/delete',{
-				id: el.data('id')
-			   }, function(){
-			        el.fadeOut(800)
-		  	  });
-		   	 }
-		})
+	$('.deleteCmd').click(function(){
+		var el = $(this).parent();
+		if (confirm('are you sure to delete?')){
+		    $.post('/delete', {
+			id: el.data('id')
+		   }, function(){
+		        el.fadeOut(800);
+		   });
+		   }
+	})
 	</script>
 </body>
 </html>
